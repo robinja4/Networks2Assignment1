@@ -1,0 +1,21 @@
+en
+conf t
+vlan 10
+name Finance
+vlan 20
+name Sales
+vlan 30
+name Personnel
+vlan 40
+name Admin
+vlan 50
+name Servers
+vlan 60
+name Management
+
+en
+conf t
+vlan 70
+name Site2Finance
+vlan 80
+name Site2Sales
