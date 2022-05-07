@@ -64,3 +64,22 @@ conf t
 interface range f0/5-8
 spanning-tree bpduguard enable
 
+conf t
+interface range f0/13-14
+shutdown
+channel-group 1 mode desirable
+no shutdown
+
+conf t
+interface port-channel 1
+switchport mode trunk
+
+conf t
+interface range f0/4,f0/9
+shutdown
+channel-group 2 mode active
+no shutdown
+interface port-channel 2
+switchport mode trunk
+end
+
