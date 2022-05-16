@@ -135,6 +135,97 @@ standby 1 ip 10.15.15.140
 interface g0/0.60
 standby 1 ip 10.15.15.156
 
+en
+conf t
+ip default-gateway 10.15.15.156
+
+router ospf 1
+router-id 1.1.1.1
+default-information originate
+network 10.15.15.1 0.0.0.31 area 0 
+network 10.15.15.32 0.0.0.31 area 0 
+network 10.15.15.64 0.0.0.31 area 0 
+network 10.15.15.96 0.0.0.31 area 0
+network 10.15.15.128 0.0.0.15 area 0
+network 10.15.15.144 0.0.0.15 area 0  
+
+router ospf 1
+router-id 2.2.2.2
+default-information originate
+network 10.15.15.1 0.0.0.31 area 0 
+network 10.15.15.32 0.0.0.31 area 0 
+network 10.15.15.64 0.0.0.31 area 0 
+network 10.15.15.96 0.0.0.31 area 0
+network 10.15.15.128 0.0.0.15 area 0
+network 10.15.15.144 0.0.0.15 area 0
+
+en
+conf t
+int g0/0.10
+ip ospf priority 255
+int g0/0.20
+ip ospf priority 255
+int g0/0.30
+ip ospf priority 255
+int g0/0.40
+ip ospf priority 255
+int g0/0.50
+ip ospf priority 255
+int g0/0.60
+ip ospf priority 255
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
