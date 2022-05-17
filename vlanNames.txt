@@ -174,8 +174,47 @@ ip ospf priority 255
 int g0/0.60
 ip ospf priority 255
 
+en
+conf t
+no ip domain-lookup
+int vlan 70
+ip address  10.16.16.2 255.255.255.248
+end
+conf t
+ip default-gateway 10.16.16.1
 
+en
+conf t
+no ip domain-lookup
+int vlan 80
+ip address  10.16.16.34 255.255.255.224
+end
+conf t
+ip default-gateway 10.16.16.33
 
+en
+conf t
+interface range fa0/1-2
+switchport mode access
+switchport access vlan 70
+
+en
+conf t
+interface range fa0/1-2
+switchport mode access
+switchport access vlan 80
+
+en
+conf t
+int g0/1
+switchport mode access
+switchport access vlan 70
+
+en
+conf t
+int g0/1
+switchport mode access
+switchport access vlan 80
 
 
 
