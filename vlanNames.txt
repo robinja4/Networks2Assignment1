@@ -216,6 +216,70 @@ int g0/1
 switchport mode access
 switchport access vlan 80
 
+en
+conf t
+int S0/3/1
+clock rate 128000
+end
+
+en
+conf t
+int S0/3/0
+ip address 172.16.1.2 255.255.255.252
+no shut
+end
+
+
+router ospf 1
+router-id 3.3.3.3
+default-information originate
+network 172.16.1.0 0.0.0.3 area 1
+network 172.16.1.4 0.0.0.3 area 1  
+
+router ospf 1
+router-id 1.1.1.1
+default-information originate
+network 172.16.1.0 0.0.0.3 area 1
+
+
+router ospf 1
+router-id 2.2.2.2
+default-information originate
+network 172.16.1.4 0.0.0.3 area 1  
+
+router ospf 1
+router-id 3.3.3.3
+default-information originate
+network 172.16.1.0 0.0.0.3 area 1
+network 172.16.1.4 0.0.0.3 area 1
+no network 10.16.16.0 0.0.0.7 area 1
+no network 10.16.16.32 0.0.0.31 area 1
+passive-interface G0/0
+passive-interface G0/1
+
+router ospf 1
+router-id 2.2.2.2
+default-information originate
+area 1 range 10.16.16.0 255.255.255.192
+
+conf t
+router ospf 1
+int g0/0.10
+ip ospf cost 10
+int g0/0.20
+ip ospf cost 10
+int g0/0.30
+ip ospf cost 10
+int g0/0.40
+ip ospf cost 10
+int g0/0.50
+ip ospf cost 10
+int g0/0.60
+ip ospf cost 10
+
+router ospf 1
+int S0/3/1
+ip ospf cost 100
 
 
 
