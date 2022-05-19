@@ -378,8 +378,14 @@ wr
 
 
 
-
-
+en
+conf t
+int G0/1
+ip helper-address 172.16.1.5
+int G0/0
+ip helper-address 172.16.1.5
+exit
+wr
 
 
 
