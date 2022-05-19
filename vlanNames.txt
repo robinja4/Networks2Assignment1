@@ -281,6 +281,107 @@ router ospf 1
 int S0/3/1
 ip ospf cost 100
 
+en
+conf t
+ip dhcp pool VLAN10
+network 10.15.15.0 255.255.255.224
+default-router 10.15.15.1
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.15.15.1
+ip dhcp excluded-address 10.15.15.2
+
+en
+conf t
+ip dhcp pool VLAN20
+network 10.15.15.32 255.255.255.224
+default-router 10.15.15.33
+dns server 8.8.8.8
+exit
+ip dhcp excluded-address 10.15.15.33
+ip dhcp excluded-address 10.15.15.34
+
+en
+conf t
+ip dhcp pool VLAN30
+network 10.15.15.64 255.255.255.224
+default-router 10.15.15.65
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.15.15.65
+ip dhcp excluded-address 10.15.15.66
+
+en
+conf t
+ip dhcp pool VLAN40
+network 10.15.15.96 255.255.255.224
+default-router 10.15.15.97
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.15.15.97
+ip dhcp excluded-address 10.15.15.98
+
+en
+conf t
+ip dhcp pool VLAN50
+network 10.15.15.228 255.255.255.240
+default-router 10.15.15.129
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.15.15.129
+ip dhcp excluded-address 10.15.15.130
+ip dhcp excluded-address 10.15.15.133
+ip dhcp excluded-address 10.15.15.134
+ip dhcp excluded-address 10.15.15.135
+ip dhcp excluded-address 10.15.15.136
+
+en
+conf t
+ip dhcp pool VLAN60
+network 10.15.15.144 255.255.255.240
+default-router 10.15.15.158
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.15.15.158
+ip dhcp excluded-address 10.15.15.157
+ip dhcp excluded-address 10.15.15.145
+ip dhcp excluded-address 10.15.15.146
+ip dhcp excluded-address 10.15.15.147
+ip dhcp excluded-address 10.15.15.148
+ip dhcp excluded-address 10.15.15.149
+
+en
+conf t
+ip dhcp pool VLAN70
+network 10.16.16.0 255.255.255.248
+default-router 10.16.16.1
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.16.16.1
+ip dhcp excluded-address 10.16.16.2
+
+en
+conf t
+ip dhcp pool VLAN80
+network 10.16.16.32 255.255.255.224
+default-router 10.16.16.33
+dns-server 8.8.8.8
+exit
+ip dhcp excluded-address 10.16.16.33
+ip dhcp excluded-address 10.16.16.34
+
+exit
+exit
+wr
+
+
+
+
+
+
+
+
+
 
 
 
