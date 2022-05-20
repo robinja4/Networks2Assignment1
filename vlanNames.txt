@@ -252,8 +252,8 @@ router-id 3.3.3.3
 default-information originate
 network 172.16.1.0 0.0.0.3 area 1
 network 172.16.1.4 0.0.0.3 area 1
-no network 10.16.16.0 0.0.0.7 area 1
-no network 10.16.16.32 0.0.0.31 area 1
+network 10.16.16.0 0.0.0.7 area 1
+network 10.16.16.32 0.0.0.31 area 1
 passive-interface G0/0
 passive-interface G0/1
 
@@ -285,65 +285,55 @@ en
 conf t
 ip dhcp pool VLAN10
 network 10.15.15.0 255.255.255.224
-default-router 10.15.15.1
+default-router 10.15.15.28
 dns-server 8.8.8.8
 exit
 ip dhcp excluded-address 10.15.15.1
 ip dhcp excluded-address 10.15.15.2
+ip dhcp excluded-address 10.15.15.28
 
 en
 conf t
 ip dhcp pool VLAN20
 network 10.15.15.32 255.255.255.224
-default-router 10.15.15.33
+default-router 10.15.15.60
 dns server 8.8.8.8
 exit
 ip dhcp excluded-address 10.15.15.33
 ip dhcp excluded-address 10.15.15.34
+ip dhcp excluded-address 10.15.15.60
 
 en
 conf t
 ip dhcp pool VLAN30
 network 10.15.15.64 255.255.255.224
-default-router 10.15.15.65
+default-router 10.15.15.92
 dns-server 8.8.8.8
 exit
 ip dhcp excluded-address 10.15.15.65
 ip dhcp excluded-address 10.15.15.66
+ip dhcp excluded-address 10.15.15.92
 
 en
 conf t
 ip dhcp pool VLAN40
 network 10.15.15.96 255.255.255.224
-default-router 10.15.15.97
+default-router 10.15.15.124
 dns-server 8.8.8.8
 exit
 ip dhcp excluded-address 10.15.15.97
 ip dhcp excluded-address 10.15.15.98
-
-en
-conf t
-ip dhcp pool VLAN50
-network 10.15.15.228 255.255.255.240
-default-router 10.15.15.129
-dns-server 8.8.8.8
-exit
+ip dhcp excluded-address 10.15.15.124
 ip dhcp excluded-address 10.15.15.129
 ip dhcp excluded-address 10.15.15.130
 ip dhcp excluded-address 10.15.15.133
 ip dhcp excluded-address 10.15.15.134
 ip dhcp excluded-address 10.15.15.135
 ip dhcp excluded-address 10.15.15.136
-
-en
-conf t
-ip dhcp pool VLAN60
-network 10.15.15.144 255.255.255.240
-default-router 10.15.15.158
-dns-server 8.8.8.8
-exit
-ip dhcp excluded-address 10.15.15.158
+ip dhcp excluded-address 10.15.15.140
+ip dhcp excluded-address 10.15.15.156
 ip dhcp excluded-address 10.15.15.157
+ip dhcp excluded-address 10.15.15.158
 ip dhcp excluded-address 10.15.15.145
 ip dhcp excluded-address 10.15.15.146
 ip dhcp excluded-address 10.15.15.147
@@ -374,10 +364,6 @@ exit
 exit
 wr
 
-
-
-
-
 en
 conf t
 int G0/1
@@ -387,8 +373,20 @@ ip helper-address 172.16.1.5
 exit
 wr
 
+en
+conf t
+ip default-gateway 10.15.15.156
 
+en
+conf t
+int range f0/1-2
+switchport port-security
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation restrict
 
+show port-security
+show port-security address
 
 
 
