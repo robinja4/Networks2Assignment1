@@ -241,6 +241,7 @@ router-id 1.1.1.1
 default-information originate
 network 172.16.1.0 0.0.0.3 area 1
 
+
 router ospf 1
 router-id 2.2.2.2
 default-information originate
@@ -251,8 +252,8 @@ router-id 3.3.3.3
 default-information originate
 network 172.16.1.0 0.0.0.3 area 1
 network 172.16.1.4 0.0.0.3 area 1
-network 10.16.16.0 0.0.0.7 area 1
-network 10.16.16.32 0.0.0.31 area 1
+no network 10.16.16.0 0.0.0.7 area 1
+no network 10.16.16.32 0.0.0.31 area 1
 passive-interface G0/0
 passive-interface G0/1
 
@@ -373,6 +374,10 @@ exit
 exit
 wr
 
+
+
+
+
 en
 conf t
 int G0/1
@@ -382,14 +387,7 @@ ip helper-address 172.16.1.5
 exit
 wr
 
-interface range f0/1-2
-switchport port-security
-switchport port-security maximum 2
-switchport port-security mac-address sticky
-switchport port-security violation restrict
 
-show port-security
-show port-security address
 
 
 
