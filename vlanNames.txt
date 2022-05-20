@@ -388,7 +388,34 @@ switchport port-security violation restrict
 show port-security
 show port-security address
 
+en
+conf t
+int g0/1
+ip address 192.168.1.1 255.255.255.252
+no shut
 
+en
+conf t
+int g0/1
+ip address 192.168.1.2 255.255.255.252
+no shut
+
+en
+conf t
+ip route 0.0.0.0 0.0.0.0 192.168.1.1
+
+en
+conf t
+ip route 10.15.15.0 255.255.255.0 G0/1
+ip route 10.16.16.0 255.255.255.248 G0/1
+end
+
+en
+conf t
+int G0/0
+ip address 209.100.100.1 255.255.255.248
+no shut
+end
 
 
 
