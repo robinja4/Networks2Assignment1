@@ -86,9 +86,9 @@ switchport mode trunk
 conf t
 interface range f0/4,f0/9
 shutdown
-channel-group 2 mode active
+channel-group 7 mode active
 no shutdown
-interface port-channel 2
+interface port-channel 7
 switchport mode trunk
 end
 
